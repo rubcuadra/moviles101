@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent().setClass(MainActivity.this, Activity1.class)); //finish();
+                startActivity(new Intent().setClass(MainActivity.this, ActivityPostsList.class)); //finish();
             }
         });
 
