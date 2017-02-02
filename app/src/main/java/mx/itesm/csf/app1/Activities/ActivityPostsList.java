@@ -72,14 +72,15 @@ public class ActivityPostsList extends AppCompatActivity
                     {
                         JSONObject p = posts.getJSONObject(i);
                         String title = p.getJSONObject("title").getString("rendered");
-                        String description = "";
+                        String description = p.getJSONObject("content").getString("rendered");
                         psts.add(new Post(title,description));
-                        Log.d("JSON",title);
+
                     }
                     mPostsAdapter.addPosts(psts);
                 }
                 catch(Exception e)
                 {
+                    Log.d("JSON",endpoint);
                     Log.d("JSON",e.toString());
                 }
             }

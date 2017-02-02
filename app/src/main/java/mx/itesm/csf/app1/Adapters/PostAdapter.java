@@ -69,6 +69,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
     {
         Post current = posts.get(position);
         holder.title.setText(current.getTitle());
+        holder.webView.loadData(current.getContent(),"text/html","UTF-8");
         Log.d("Adding",posts.get(position).getTitle());
     }
 
