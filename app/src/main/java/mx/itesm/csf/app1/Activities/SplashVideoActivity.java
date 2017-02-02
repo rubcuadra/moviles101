@@ -1,4 +1,4 @@
-package mx.itesm.csf.app1;
+package mx.itesm.csf.app1.Activities;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.VideoView;
+
+import mx.itesm.csf.app1.R;
 
 public class SplashVideoActivity extends AppCompatActivity {
 

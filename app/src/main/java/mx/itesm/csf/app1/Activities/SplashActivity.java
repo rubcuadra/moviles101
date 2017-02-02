@@ -1,15 +1,14 @@
-package mx.itesm.csf.app1;
+package mx.itesm.csf.app1.Activities;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.VideoView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import mx.itesm.csf.app1.R;
 
 public class SplashActivity extends AppCompatActivity {
 
