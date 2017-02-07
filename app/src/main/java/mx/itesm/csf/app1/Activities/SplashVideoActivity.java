@@ -1,5 +1,6 @@
 package mx.itesm.csf.app1.Activities;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class SplashVideoActivity extends AppCompatActivity {
             public void onCompletion(MediaPlayer mp)
             {
                 finish();
+                startActivity(new Intent().setClass(SplashVideoActivity.this, MainActivity.class));
             }
         });
         mVideo.start();
