@@ -36,7 +36,7 @@ public class SplashVideoActivity extends AppCompatActivity {
             public void onCompletion(MediaPlayer mp)
             {
                 finish();
-                startActivity(new Intent().setClass(SplashVideoActivity.this, MainActivity.class));
+                //startActivity(new Intent().setClass(SplashVideoActivity.this, MainActivity.class));
             }
         });
         mVideo.start();
