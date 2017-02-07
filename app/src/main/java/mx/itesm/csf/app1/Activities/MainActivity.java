@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent().setClass(MainActivity.this, Activity2.class));
+                startActivity(new Intent().setClass(MainActivity.this, ActivityFresco.class));
             }
         });
 
