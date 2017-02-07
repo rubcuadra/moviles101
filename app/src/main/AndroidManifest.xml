@@ -22,7 +22,6 @@
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.ActivityPostsList" />
         <activity android:name=".Activities.Activity2" />
-        <activity android:name=".Activities.Activity3" />
 
         <activity android:name=".Activities.SplashVideoActivity"
                 android:screenOrientation="landscape"

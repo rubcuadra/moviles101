@@ -1,3 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">app1</string>
+
+<string name="app_name">App</string>
+<string name="activities_prompt">Activities</string>
+
+<string-array name="activities_array">
+    <item>Answer</item>
+    <item>Call</item>
+    <item>Delete</item>
+    <item>Dial</item>
+    <item>Edit</item>
+    <item>Insert</item>
+    <item>Pick</item>
+    <item>Search</item>
+    <item>SendTo</item>
+    <item>View</item>
+    <item>WebSearch</item>
+</string-array>
+
 </resources>
