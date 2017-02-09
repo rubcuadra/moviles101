@@ -12,7 +12,7 @@ import mx.itesm.csf.app1.R;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long WAIT = 5000; //5s
+    private static final long WAIT = 2000; //5s
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

@@ -11,16 +11,18 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import mx.itesm.csf.app1.R;
 
 public class MainActivity extends AppCompatActivity
 {
-    private Button firstButton;
-    private Button secondButton;
-    private Button thirdButton;
-    private Button fourthButton;
-    private Button fifthButton;
-    private Spinner spinAct;
+    @BindView(R.id.lista) Button firstButton;
+    @BindView(R.id.button2) Button secondButton;
+    @BindView(R.id.llamada) Button thirdButton;
+    @BindView(R.id.video) Button fourthButton;
+    @BindView(R.id.activities) Button fifthButton;
+    @BindView(R.id.activityChoice) Spinner spinAct;
 
     private String[] av_activities;
     private String selectedIntent;
@@ -36,14 +38,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        firstButton = (Button) findViewById(R.id.lista);
-        secondButton = (Button) findViewById(R.id.button2);
-        thirdButton = (Button) findViewById(R.id.llamada);
-        fourthButton = (Button) findViewById(R.id.video);
-        fifthButton = (Button) findViewById(R.id.activities);
-        spinAct = (Spinner) findViewById(R.id.activityChoice);
-
+        ButterKnife.bind(this);
         av_activities = getResources().getStringArray(R.array.activities_array);
 
         firstButton.setOnClickListener(new View.OnClickListener()

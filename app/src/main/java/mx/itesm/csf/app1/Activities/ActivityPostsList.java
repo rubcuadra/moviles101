@@ -1,35 +1,19 @@
 package mx.itesm.csf.app1.Activities;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import mx.itesm.csf.app1.Adapters.PostAdapter;
 import mx.itesm.csf.app1.Models.Post;
 import mx.itesm.csf.app1.R;
@@ -42,7 +26,6 @@ public class ActivityPostsList extends AppCompatActivity
     private static final String posts_endpoint =  "posts";
     private static final String posts_endpoint_args =  "?fields=title,content";
     private PostAdapter mPostsAdapter;
-    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
