@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mx.itesm.csf.app1">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -22,12 +22,11 @@
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.ActivityPostsList" />
         <activity android:name=".Activities.ActivityFresco" />
-
-        <activity android:name=".Activities.SplashVideoActivity"
-                android:screenOrientation="landscape"
-                android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
-
+        <activity
+            android:name=".Activities.SplashVideoActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".Activities.AutosActivity"></activity>
     </application>
 
 </manifest>

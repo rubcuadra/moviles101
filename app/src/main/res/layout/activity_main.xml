@@ -57,10 +57,10 @@
         app:layout_constraintTop_toBottomOf="@+id/lista" />
 
     <Button
-        android:text="Video"
+        android:text="Autos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/video"
+        android:id="@+id/auto"
         app:layout_constraintLeft_toLeftOf="@+id/button2"
         android:layout_marginTop="48dp"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
@@ -80,7 +80,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/activities"
-            app:layout_constraintRight_toRightOf="@+id/video"
+            app:layout_constraintRight_toRightOf="@+id/auto"
             app:layout_constraintTop_toTopOf="@+id/activityChoice"
             android:layout_marginStart="8dp"
             app:layout_constraintLeft_toRightOf="@+id/activityChoice" />

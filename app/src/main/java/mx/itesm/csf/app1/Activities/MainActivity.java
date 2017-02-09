@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.lista) Button firstButton;
     @BindView(R.id.button2) Button secondButton;
     @BindView(R.id.llamada) Button thirdButton;
-    @BindView(R.id.video) Button fourthButton;
+    @BindView(R.id.auto) Button fourthButton;
     @BindView(R.id.activities) Button fifthButton;
     @BindView(R.id.activityChoice) Spinner spinAct;
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent().setClass(MainActivity.this, SplashVideoActivity.class));
+                startActivity(new Intent().setClass(MainActivity.this, AutosActivity.class));
             }
         });
         fifthButton.setOnClickListener(new View.OnClickListener()
