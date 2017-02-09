@@ -5,14 +5,13 @@ import android.os.Bundle;
 
 import mx.itesm.csf.app1.R;
 
-public class AutosActivity extends AppCompatActivity
+public class ParserArregloJSONActivity extends AppCompatActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_autos);
-
+        setContentView(R.layout.activity_parser_arreglo_json);
     }
 }

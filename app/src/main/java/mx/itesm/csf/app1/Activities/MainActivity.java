@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent().setClass(MainActivity.this, AutosActivity.class));
+                startActivity(new Intent().setClass(MainActivity.this, ParserActivity.class));
             }
         });
         fifthButton.setOnClickListener(new View.OnClickListener()
