@@ -26,7 +26,8 @@
             android:name=".Activities.SplashVideoActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
-        <activity android:name=".Activities.AutosActivity"></activity>
+        <activity android:name=".Activities.AutosActivity"
+                  android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>
