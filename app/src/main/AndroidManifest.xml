@@ -26,10 +26,12 @@
             android:name=".Activities.SplashVideoActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Activities.ParserActivity"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Activities.ParserActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Activities.ParserObjetoJSONActivity" />
-        <activity android:name=".Activities.ParserArregloJSONActivity"></activity>
+        <activity android:name=".Activities.ParserArregloJSONActivity" />
+        <activity android:name=".Activities.PostDetailActivity"></activity>
     </application>
 
 </manifest>

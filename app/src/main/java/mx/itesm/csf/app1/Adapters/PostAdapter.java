@@ -1,16 +1,16 @@
 package mx.itesm.csf.app1.Adapters;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import java.util.List;
 
+import mx.itesm.csf.app1.Activities.PostDetailActivity;
 import mx.itesm.csf.app1.Models.Post;
 import mx.itesm.csf.app1.R;
 
@@ -29,22 +29,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         this.activity = activity;
     }
 
-    public void reset()
-    {
-        posts.clear();
-        notifyDataSetChanged();
-    }
-
     public void addPosts(List<Post> posts_list)
     {
         this.posts.addAll(posts_list);
         notifyDataSetChanged();
     }
-    public void addPost(Post post)
-    {
-        this.posts.add(post);
-        notifyDataSetChanged();
-    }
+
     @Override
     public int getItemViewType(int position)
     {
@@ -52,9 +42,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
     }
 
     @Override
-    public int
-    getItemCount()
-    {return posts.size();}
+    public int getItemCount() {return posts.size();}
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
@@ -65,27 +53,32 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position)
+    public void onBindViewHolder(ViewHolder holder, final int position)
     {
-        Post current = posts.get(position);
+        final Post current = posts.get(position);
         holder.title.setText(current.getTitle());
-        holder.webView.loadData(current.getContent(),"text/html","UTF-8");
-        Log.d("Adding",posts.get(position).getTitle());
+        holder.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(activity,PostDetailActivity.class);
+                intent.putExtras( Post.asBundle(current) );
+                activity.startActivity(intent);
+            }
+        });
     }
-
     /**
      * View holder to display each RecylerView item
      */
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         protected TextView title;
-        protected WebView webView;
 
         public ViewHolder(View view)
         {
             super(view);
-            title = (TextView) view.findViewById( R.id.post_title);
-            webView = (WebView) view.findViewById(R.id.posdt_webView);
+            title = (TextView) view.findViewById( R.id.post_list_title);
         }
     }
 }
