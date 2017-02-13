@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.itesm.csf.app1.R;
 
-public class ActivityFresco extends AppCompatActivity
+public class FrescoActivity extends AppCompatActivity
 {
     @BindView(R.id.frescoImage) SimpleDraweeView mDraweeView;
     private static final String image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Garlicbread.jpg/2560px-Garlicbread.jpg";

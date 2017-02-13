@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent().setClass(MainActivity.this, ActivityPostsList.class)); //finish();
+                startActivity(new Intent().setClass(MainActivity.this, PostsListActivity.class)); //finish();
             }
         });
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent().setClass(MainActivity.this, ActivityFresco.class));
+                startActivity(new Intent().setClass(MainActivity.this, FrescoActivity.class));
             }
         });
 

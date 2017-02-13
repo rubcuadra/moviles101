@@ -22,7 +22,7 @@ import mx.itesm.csf.app1.Models.Post;
 import mx.itesm.csf.app1.R;
 import mx.itesm.csf.app1.Requester;
 
-public class ActivityPostsList extends AppCompatActivity
+public class PostsListActivity extends AppCompatActivity
 {
     private RecyclerView mRecyclerView;
     private static final String api_base=  "http://ubiquitous.csf.itesm.mx/~pddm-1019102/CMS/wp-json/wp/v2/";

@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.ActivityPostsList" />
-        <activity android:name=".Activities.ActivityFresco" />
+        <activity android:name=".Activities.PostsListActivity" />
+        <activity android:name=".Activities.FrescoActivity" />
         <activity
             android:name=".Activities.SplashVideoActivity"
             android:screenOrientation="landscape"
@@ -29,8 +29,8 @@
         <activity
             android:name=".Activities.ParserActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Activities.ParserObjetoJSONActivity" />
-        <activity android:name=".Activities.ParserArregloJSONActivity" />
+        <activity android:name=".Activities.AutoDetailActivity" />
+        <activity android:name=".Activities.AutosListActivity" />
         <activity android:name=".Activities.PostDetailActivity"></activity>
     </application>
 
