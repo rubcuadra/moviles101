@@ -15,6 +15,10 @@ public class Auto implements Serializable,Parcelable
     private String auto;
     private String marca;
     private String image;
+    private Integer id;
+    private String color;
+    private Integer puertas;
+    private Integer anio;
 
     public Auto(Parcel in)
     {
@@ -22,12 +26,7 @@ public class Auto implements Serializable,Parcelable
         marca = in.readString();
         image = in.readString();
     }
-    public Auto(String auto,String marca,String image)
-    {
-        this.auto = auto;
-        this.marca = marca;
-        this.image = image;
-    }
+
     public Auto(){}
 
     public String getMarca() {
@@ -96,4 +95,48 @@ public class Auto implements Serializable,Parcelable
             return new Auto[size];
         }
     };
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Integer getPuertas() {
+        return puertas;
+    }
+
+    public void setPuertas(Integer puertas) {
+        this.puertas = puertas;
+    }
+
+    public Integer getAnio() {
+        return anio;
+    }
+
+    public void setAnio(Integer anio) {
+        this.anio = anio;
+    }
+
+    @Override
+    public String toString()
+    {
+        return  this.id+"\n"+
+                this.auto+"\n"+
+                this.marca+"\n"+
+                this.color+"\n"+
+                this.image+"\n"+
+                this.puertas+"\n"+
+                this.anio+"\n";
+    }
 }

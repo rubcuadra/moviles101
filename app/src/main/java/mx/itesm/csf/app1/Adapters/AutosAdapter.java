@@ -58,6 +58,7 @@ public class AutosAdapter extends RecyclerView.Adapter<AutosAdapter.ViewHolder>
             @Override
             public void onClick(View v)
             {
+                Log.d("ADAPTER",current.toString() );
                 Intent intent = new Intent(activity,AutoDetailActivity.class);
                 intent.putExtras( Auto.asBundle(current) );
                 activity.startActivity(intent);

@@ -38,9 +38,7 @@ import java.util.ArrayList;
 public class AutoFragment extends Fragment
 {
     private OnAutosListFragmentInteractionListener mListener;
-    //http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/020217/servicio.multiplesAutos.php
-    //Modificar endpoint para que sea un array y no un objeto con nombre autos que da un array
-    private static String url_array = "http://ubiquitous.csf.itesm.mx/~raulms/do/REST/Arreglo.exe?count=";
+    private static String url_array = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/020217/servicio.multiplesAutos.php";
     private Activity CONTEXT;
     private RecyclerView mRecyclerView;
     private AutosAdapter mAutosAdapter;
@@ -94,11 +92,10 @@ public class AutoFragment extends Fragment
 
     void loadAutos()
     {
-        int count = 2; //total de autos a obtener
         final ProgressDialog barraDeProgreso = new ProgressDialog(CONTEXT);
         barraDeProgreso.setMessage("Espera...");
         barraDeProgreso.show();
-        JsonArrayRequest jsonArr = new JsonArrayRequest(Request.Method.GET,url_array+count,null,new Response.Listener<JSONArray>()
+        JsonArrayRequest jsonArr = new JsonArrayRequest(Request.Method.GET,url_array,null,new Response.Listener<JSONArray>()
         {
             @Override
             public void onResponse(JSONArray response)
@@ -112,7 +109,7 @@ public class AutoFragment extends Fragment
             @Override
             public void onErrorResponse(VolleyError error)
             {
-                VolleyLog.d("FRAGMENTO",error.getMessage());
+                error.printStackTrace();
                 barraDeProgreso.hide();
             }
         });

@@ -50,6 +50,10 @@ public class JSONParser
                 auto.setAuto( obj.getString("auto") );
                 auto.setMarca(obj.getString("marca"));
                 auto.setImage(obj.getString("image"));
+                auto.setAnio( obj.getInt("anio"));
+                auto.setColor(obj.getString("color"));
+                auto.setId(obj.getInt("id"));
+                auto.setPuertas(obj.getInt("puertas"));
 
                 autos.add(auto);
             }
