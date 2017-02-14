@@ -47,8 +47,8 @@ public class JSONParser
                 obj = arr.getJSONObject(i);
                 auto = new Auto();
 
-                auto.setAuto( obj.getString("Auto") );
-                auto.setMarca(obj.getString("Marca"));
+                auto.setAuto( obj.getString("auto") );
+                auto.setMarca(obj.getString("marca"));
                 auto.setImage(obj.getString("image"));
 
                 autos.add(auto);

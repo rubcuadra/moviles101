@@ -38,8 +38,9 @@ import java.util.ArrayList;
 public class AutoFragment extends Fragment
 {
     private OnAutosListFragmentInteractionListener mListener;
-    //private static String url_array = "http://ubiquitous.csf.itesm.mx/~raulms/do/REST/Arreglo.exe?count=";
-    private static String url_array = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/020217/servicio.multiplesAutos.php";
+    //http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/020217/servicio.multiplesAutos.php
+    //Modificar endpoint para que sea un array y no un objeto con nombre autos que da un array
+    private static String url_array = "http://ubiquitous.csf.itesm.mx/~raulms/do/REST/Arreglo.exe?count=";
     private Activity CONTEXT;
     private RecyclerView mRecyclerView;
     private AutosAdapter mAutosAdapter;
