@@ -25,6 +25,20 @@ public class Auto implements Serializable,Parcelable
         auto = in.readString();
         marca = in.readString();
         image = in.readString();
+        color = in.readString();
+        puertas = in.readInt();
+        anio = in.readInt();
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeString(auto);
+        dest.writeString(marca);
+        dest.writeString(image);
+        dest.writeString(color);
+        dest.writeInt(puertas);
+        dest.writeInt(anio);
+
     }
 
     public Auto(){}
@@ -59,6 +73,9 @@ public class Auto implements Serializable,Parcelable
         b.putString("auto",a.getAuto());
         b.putString("marca",a.getMarca());
         b.putString("image",a.getImage());
+        b.putString("color",a.getColor());
+        b.putInt("anio",a.getAnio());
+        b.putInt("puertas",a.getPuertas());
         return b;
     }
 
@@ -68,19 +85,14 @@ public class Auto implements Serializable,Parcelable
         a.setAuto( b.getString("auto") );
         a.setMarca( b.getString("marca") );
         a.setImage( b.getString("image") );
+        a.setColor( b.getString("color"));
+        a.setPuertas(b.getInt("puertas"));
+        a.setAnio(b.getInt("anio"));
         return a;
     }
 
     @Override
     public int describeContents() {return 0;}
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags)
-    {
-        dest.writeString(auto);
-        dest.writeString(marca);
-        dest.writeString(image);
-    }
 
     public static final Parcelable.Creator<Auto> CREATOR = new Parcelable.Creator<Auto>()
     {
