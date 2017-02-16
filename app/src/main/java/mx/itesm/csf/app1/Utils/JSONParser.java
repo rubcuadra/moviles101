@@ -21,9 +21,13 @@ public class JSONParser
         try
         {
             Auto aut = new Auto();
-            aut.setAuto( obj.getString("Auto") );
-            aut.setMarca(obj.getString("Marca"));
+            aut.setAuto( obj.getString("auto") );
+            aut.setMarca(obj.getString("marca"));
             aut.setImage(obj.getString("image"));
+            aut.setAnio( obj.getInt("anio"));
+            aut.setColor(obj.getString("color"));
+            aut.setId(obj.getInt("id"));
+            aut.setPuertas(obj.getInt("puertas"));
             return aut;
 
         }
@@ -39,7 +43,6 @@ public class JSONParser
         JSONObject obj = null;
         Auto auto = null;
         autos.clear();
-
         try
         {
             for (int i = 0; i < arr.length(); i++)
@@ -64,8 +67,5 @@ public class JSONParser
             ex.printStackTrace();
             return null;
         }
-
     }
-
-
 }

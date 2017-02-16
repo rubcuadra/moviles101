@@ -33,7 +33,7 @@ public class ParserActivity extends AppCompatActivity {
 
     private Auto objectAuto;
     private static final String TAG =  "ParserActivityButtons";
-    private static String url = "http://ubiquitous.csf.itesm.mx/~raulms/do/REST/Objeto.exe";
+    private static String url = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/tareas/8/servicio.autoObject.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

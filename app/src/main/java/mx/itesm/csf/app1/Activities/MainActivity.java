@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent().setClass(MainActivity.this, FrescoActivity.class));
+                startActivity(new Intent().setClass(MainActivity.this, GUIActivity.class));
             }
         });
 

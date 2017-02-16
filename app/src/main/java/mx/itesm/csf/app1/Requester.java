@@ -24,6 +24,7 @@ public class Requester extends Application
     {
         super.onCreate();
         sInstance = this;
+
     }
     public static synchronized Requester getInstance()
     {
@@ -36,6 +37,7 @@ public class Requester extends Application
         {
             mRequestQ = Volley.newRequestQueue(getApplicationContext());
         }
+
         return mRequestQ;
     }
     public <T> void addToRequestQueue(Request<T> req, String tag)
