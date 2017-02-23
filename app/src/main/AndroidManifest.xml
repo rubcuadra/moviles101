@@ -31,7 +31,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Activities.AutoDetailActivity" />
         <activity android:name=".Activities.AutosListActivity" />
-        <activity android:name=".Activities.PostDetailActivity"></activity>
+        <activity android:name=".Activities.PostDetailActivity" />
+        <activity android:name=".Activities.LoginActivity"></activity>
     </application>
 
 </manifest>

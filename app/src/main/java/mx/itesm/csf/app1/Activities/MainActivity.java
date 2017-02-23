@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity
 {
     @BindView(R.id.lista) Button firstButton;
     @BindView(R.id.button2) Button secondButton;
-    @BindView(R.id.llamada) Button thirdButton;
+    @BindView(R.id.login) Button thirdButton;
     @BindView(R.id.auto) Button fourthButton;
     @BindView(R.id.activities) Button fifthButton;
     @BindView(R.id.activityChoice) Spinner spinAct;
@@ -64,12 +64,14 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent dial = new Intent(Intent.ACTION_DIAL);
+                startActivity(new Intent().setClass(MainActivity.this,LoginActivity.class));
+                /*Intent dial = new Intent(Intent.ACTION_DIAL);
                 dial.setData(Uri.parse("tel:"+phone));
                 if (dial.resolveActivity(getPackageManager()) != null)
                 {
                     startActivityForResult(dial,DIAL_ID);
                 }
+                */
             }
         });
 

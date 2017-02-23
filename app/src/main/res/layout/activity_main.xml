@@ -48,10 +48,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:text="Llamadas"
+        android:text="Logins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/llamada"
+        android:id="@+id/login"
         app:layout_constraintLeft_toLeftOf="@+id/lista"
         android:layout_marginTop="48dp"
         app:layout_constraintTop_toBottomOf="@+id/lista" />
@@ -72,8 +72,8 @@
             android:entries="@array/activities_array"
             android:prompt="@string/activities_prompt"
             android:layout_marginTop="48dp"
-            app:layout_constraintTop_toBottomOf="@+id/llamada"
-            app:layout_constraintLeft_toLeftOf="@+id/llamada" />
+            app:layout_constraintTop_toBottomOf="@+id/login"
+            app:layout_constraintLeft_toLeftOf="@+id/login" />
 
         <Button
             android:text="Button"
