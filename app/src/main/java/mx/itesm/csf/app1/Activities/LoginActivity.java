@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity
 
 
     private static final String SERVICIO_REGISTRO = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/160217/servicio.registro.php";
-    private static final String SERVICIO_LOGIN = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/160217/servicio.login.php";
+    private static final String SERVICIO_LOGIN = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial2/ejercicios/230217/servicio.login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,6 +45,15 @@ public class LoginActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 registerUser(et_username.getText().toString(),et_email.getText().toString(),et_password.getText().toString());
+            }
+        });
+        loginButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                loginUser(et_username.getText().toString(), et_password.getText().toString());
+
             }
         });
     }
@@ -76,6 +85,25 @@ public class LoginActivity extends AppCompatActivity
                                 return params;
                             }
                         };
+        Requester.getInstance().addToRequestQueue(rq);
+    }
+    private void loginUser(final String uname, final String pwd)
+    {
+        StringRequest rq = new StringRequest(Request.Method.GET, SERVICIO_LOGIN+"?usuario="+uname+"&password="+pwd, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response)
+            {
+                Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
         Requester.getInstance().addToRequestQueue(rq);
     }
 }
