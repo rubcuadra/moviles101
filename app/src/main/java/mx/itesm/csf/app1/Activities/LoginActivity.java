@@ -2,15 +2,20 @@ package mx.itesm.csf.app1.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +36,8 @@ public class LoginActivity extends AppCompatActivity
 
 
     private static final String SERVICIO_REGISTRO = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/160217/servicio.registro.php";
-    private static final String SERVICIO_LOGIN = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial2/ejercicios/230217/servicio.login.php";
+    private static final String SERVICIO_LOGIN = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial2/ejercicios/270217/servicio.login.php";
+    private static final String TAG = "LOGINACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -89,21 +95,43 @@ public class LoginActivity extends AppCompatActivity
     }
     private void loginUser(final String uname, final String pwd)
     {
-        StringRequest rq = new StringRequest(Request.Method.GET, SERVICIO_LOGIN+"?usuario="+uname+"&password="+pwd, new Response.Listener<String>()
+        /*
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("usuario", uname);
+        params.put("password", pwd);
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("type", "my type");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        */
+        //DEBEMOS PASARLE LAS COSAS
+        JsonArrayRequest rq = new JsonArrayRequest(Request.Method.POST, SERVICIO_LOGIN, null ,new Response.Listener<JSONArray>()
         {
             @Override
-            public void onResponse(String response)
+            public void onResponse(JSONArray response)
             {
-                Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this,response.toString(),Toast.LENGTH_LONG).show();
             }
+
         }, new Response.ErrorListener()
         {
             @Override
             public void onErrorResponse(VolleyError error)
             {
-                Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                error.printStackTrace();
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError
+            {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Basic OTEwMjo5MTAy"); //BIEN NACO HARDCODEADO
+                return headers;
+            }
+        };
+
         Requester.getInstance().addToRequestQueue(rq);
     }
 }
