@@ -1,22 +1,29 @@
 package mx.itesm.csf.app1.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -95,24 +102,17 @@ public class LoginActivity extends AppCompatActivity
     }
     private void loginUser(final String uname, final String pwd)
     {
-        /*
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("usuario", uname);
-        params.put("password", pwd);
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("type", "my type");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        */
-        //DEBEMOS PASARLE LAS COSAS
-        JsonArrayRequest rq = new JsonArrayRequest(Request.Method.POST, SERVICIO_LOGIN, null ,new Response.Listener<JSONArray>()
+        String url = SERVICIO_LOGIN + String.format( "?usuario=%s&password=%s", uname,pwd );
+
+        JsonArrayRequest rq = new JsonArrayRequest(Request.Method.GET,url, null ,new Response.Listener<JSONArray>()
         {
             @Override
             public void onResponse(JSONArray response)
             {
                 Toast.makeText(LoginActivity.this,response.toString(),Toast.LENGTH_LONG).show();
+                //IF SUCCESS
+                    startActivity(new Intent().setClass(LoginActivity.this, Main2Activity.class));
+                    finish();
             }
 
         }, new Response.ErrorListener()
@@ -130,6 +130,8 @@ public class LoginActivity extends AppCompatActivity
                 headers.put("Authorization", "Basic OTEwMjo5MTAy"); //BIEN NACO HARDCODEADO
                 return headers;
             }
+
+
         };
 
         Requester.getInstance().addToRequestQueue(rq);

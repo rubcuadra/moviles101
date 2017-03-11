@@ -32,7 +32,11 @@
         <activity android:name=".Activities.AutoDetailActivity" />
         <activity android:name=".Activities.AutosListActivity" />
         <activity android:name=".Activities.PostDetailActivity" />
-        <activity android:name=".Activities.LoginActivity"></activity>
+        <activity android:name=".Activities.LoginActivity" />
+        <activity
+            android:name=".Activities.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
