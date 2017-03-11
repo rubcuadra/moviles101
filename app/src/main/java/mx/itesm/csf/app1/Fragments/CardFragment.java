@@ -1,7 +1,6 @@
 package mx.itesm.csf.app1.Fragments;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,23 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-
-import org.json.JSONArray;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import mx.itesm.csf.app1.Adapters.AutosAdapter;
 import mx.itesm.csf.app1.Adapters.CardAdapter;
-import mx.itesm.csf.app1.Models.Auto;
 import mx.itesm.csf.app1.Models.Card;
 import mx.itesm.csf.app1.R;
-import mx.itesm.csf.app1.Requester;
-import mx.itesm.csf.app1.Utils.JSONParser;
 
 /**
  * Created by rubcuadra on 3/9/17.
@@ -98,9 +86,10 @@ public class CardFragment extends Fragment
     {
         //DUMMY CONTENT
         List<Card> cards = new ArrayList<>();
-        Card c = new Card();
+
         for (int i = 0; i < 10; i++)
         {
+            Card c = new Card();
             c.setAuto( String.format("test%s",i) ) ;
             c.setMarca( String.valueOf(i) );
             cards.add(c);

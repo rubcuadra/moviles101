@@ -22,9 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mx.itesm.csf.app1.Fragments.CardFragment;
+import mx.itesm.csf.app1.Models.Card;
 import mx.itesm.csf.app1.R;
 
-public class Main2Activity extends AppCompatActivity
+public class Main2Activity extends AppCompatActivity implements CardFragment.OnCardListFragmentInteractionListener
 {
 
     /**
@@ -95,6 +96,13 @@ public class Main2Activity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void OnCardListFragmentInteraction(Card c)
+    {
+
+
     }
 
     /**
