@@ -3,6 +3,8 @@ package mx.itesm.csf.app1.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity
     @BindView(R.id.editText10) EditText et_email;
 
 
+    public static final String AUTH_HEADER = "Basic OTEwMjo5MTAy";
     private static final String SERVICIO_REGISTRO = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial1/ejercicios/160217/servicio.registro.php";
     private static final String SERVICIO_LOGIN = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial2/ejercicios/270217/servicio.login.php";
     private static final String TAG = "LOGINACTIVITY";
@@ -109,10 +112,30 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onResponse(JSONArray response)
             {
-                Toast.makeText(LoginActivity.this,response.toString(),Toast.LENGTH_LONG).show();
-                //IF SUCCESS
-                    startActivity(new Intent().setClass(LoginActivity.this, Main2Activity.class));
-                    finish();
+                try
+                {
+                    JSONObject codes = response.getJSONObject(0);
+                    if (codes.getInt("Codigo") == 01) //Exito
+                    {
+                        JSONObject data = response.getJSONObject(1);
+                        JSONObject data2 = response.getJSONObject(2);
+                        Toast.makeText(LoginActivity.this,"Welcome "+data2.getString("Nombre") ,Toast.LENGTH_SHORT).show();
+                        Intent lst = new Intent().setClass(LoginActivity.this, Main2Activity.class);
+                        lst.putExtra("user",data.getString("usuario"));
+                        lst.putExtra("pass",data.getString("password")  );
+                        lst.putExtra("uId", data.getInt("id") );
+                        startActivity(lst);
+                        finish();
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginActivity.this,response.toString(),Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
             }
 
         }, new Response.ErrorListener()
@@ -127,7 +150,10 @@ public class LoginActivity extends AppCompatActivity
             public Map<String, String> getHeaders() throws AuthFailureError
             {
                 HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", "Basic OTEwMjo5MTAy"); //BIEN NACO HARDCODEADO
+
+                String auth = new String(Base64.encode("9102:9102".getBytes(),Base64.NO_WRAP ))  ;
+                headers.put("Authorization", "Basic "+auth); //BIEN NACO HARDCODEADO
+
                 return headers;
             }
 

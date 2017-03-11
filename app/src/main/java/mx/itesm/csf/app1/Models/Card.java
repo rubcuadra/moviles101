@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Card implements Serializable,Parcelable
 {
     private String auto;
-    private String marca;
+    private String precio;
     private String image;
     private Integer id;
     private String color;
@@ -23,7 +23,7 @@ public class Card implements Serializable,Parcelable
     public Card(Parcel in)
     {
         auto = in.readString();
-        marca = in.readString();
+        precio = in.readString();
         image = in.readString();
         color = in.readString();
         puertas = in.readInt();
@@ -33,7 +33,7 @@ public class Card implements Serializable,Parcelable
     public void writeToParcel(Parcel dest, int flags)
     {
         dest.writeString(auto);
-        dest.writeString(marca);
+        dest.writeString(precio);
         dest.writeString(image);
         dest.writeString(color);
         dest.writeInt(puertas);
@@ -43,12 +43,12 @@ public class Card implements Serializable,Parcelable
 
     public Card(){}
 
-    public String getMarca() {
-        return marca;
+    public String getPrecio() {
+        return precio;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setPrecio(String marca) {
+        this.precio = marca;
     }
 
     public String getAuto() {
@@ -71,7 +71,7 @@ public class Card implements Serializable,Parcelable
     {
         Bundle b = new Bundle();
         b.putString("auto",a.getAuto());
-        b.putString("marca",a.getMarca());
+        b.putString("precio",a.getPrecio());
         b.putString("image",a.getImage());
         b.putString("color",a.getColor());
         b.putInt("anio",a.getAnio());
@@ -83,7 +83,7 @@ public class Card implements Serializable,Parcelable
     {
         Card a = new Card();
         a.setAuto( b.getString("auto") );
-        a.setMarca( b.getString("marca") );
+        a.setPrecio( b.getString("precio") );
         a.setImage( b.getString("image") );
         a.setColor( b.getString("color"));
         a.setPuertas(b.getInt("puertas"));
@@ -145,7 +145,7 @@ public class Card implements Serializable,Parcelable
     {
         return  this.id+"\n"+
                 this.auto+"\n"+
-                this.marca+"\n"+
+                this.precio +"\n"+
                 this.color+"\n"+
                 this.image+"\n"+
                 this.puertas+"\n"+

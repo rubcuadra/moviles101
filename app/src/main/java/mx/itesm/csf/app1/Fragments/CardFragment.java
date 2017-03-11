@@ -9,13 +9,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import mx.itesm.csf.app1.Adapters.CardAdapter;
 import mx.itesm.csf.app1.Models.Card;
 import mx.itesm.csf.app1.R;
+import mx.itesm.csf.app1.Requester;
+
+import static mx.itesm.csf.app1.Activities.LoginActivity.AUTH_HEADER;
 
 /**
  * Created by rubcuadra on 3/9/17.
@@ -27,6 +43,7 @@ public class CardFragment extends Fragment
     private Activity CONTEXT;
     private RecyclerView mRecyclerView;
     private CardAdapter mCardAdapter;
+    private static final String SERVICIO_AUTOS = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial2/ejercicios/060317/servicio.autos.php";
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -84,18 +101,59 @@ public class CardFragment extends Fragment
 
     void loadCards()
     {
-        //DUMMY CONTENT
-        List<Card> cards = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++)
+        String url = SERVICIO_AUTOS; //+ algo?
+        JsonArrayRequest rq = new JsonArrayRequest(Request.Method.GET,url, null ,new Response.Listener<JSONArray>()
         {
-            Card c = new Card();
-            c.setAuto( String.format("test%s",i) ) ;
-            c.setMarca( String.valueOf(i) );
-            cards.add(c);
-        }
+            @Override
+            public void onResponse(JSONArray response)
+            {
+                List<Card> cards = new ArrayList<>();
+                try
+                {
+                    JSONObject codes = response.getJSONObject(0);
+                    if (codes.getInt("Codigo") == 01) //Exito
+                    {
+                        for (int i = 1; i < response.length(); i++) //De 1 por que 0 son codigos
+                        {
+                            JSONObject current = response.getJSONObject(i);
+                            Card c = new Card();
+                            c.setAuto( current.getString("Nombre")  ) ;
+                            c.setPrecio( current.getString("Precio") );
+                            c.setImage( current.getString("imagen") );
+                            cards.add(c);
+                        }
+                        mCardAdapter.addCards(cards);
+                    }
+                    else
+                    {
+                        Toast.makeText(CONTEXT,response.toString(),Toast.LENGTH_LONG).show();
+                    }
 
-        mCardAdapter.addCards(cards);
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError
+            {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", AUTH_HEADER);
+                return headers;
+            }
+        };
+
+        Requester.getInstance().addToRequestQueue(rq);
     }
 
     /**

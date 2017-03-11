@@ -18,9 +18,12 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
 import mx.itesm.csf.app1.Fragments.CardFragment;
 import mx.itesm.csf.app1.Models.Card;
 import mx.itesm.csf.app1.R;
@@ -47,7 +50,14 @@ public class Main2Activity extends AppCompatActivity implements CardFragment.OnC
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        Fresco.initialize(this);
         setContentView(R.layout.activity_main2);
+        ButterKnife.bind(this);
+
+        String username = getIntent().getExtras().getString("user");
+        String password = getIntent().getExtras().getString("pass");
+        String userId = getIntent().getExtras().getString("uId");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -1,11 +1,15 @@
 package mx.itesm.csf.app1.Adapters;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
+
 import java.util.List;
 import mx.itesm.csf.app1.Models.Card;
 import mx.itesm.csf.app1.R;
@@ -45,7 +49,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>
     {
         final Card current = cards.get(position);
         holder.title.setText(current.getAuto());
-        holder.marca.setText(current.getMarca());
+        holder.marca.setText(current.getPrecio());
+        holder.img.setImageURI( Uri.parse( current.getImage() ) );
     }
 
 
@@ -62,12 +67,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>
     {
         protected TextView title;
         protected TextView marca;
+        protected SimpleDraweeView img;
 
         public ViewHolder(View view)
         {
             super(view);
             title = (TextView) view.findViewById( R.id.card_list_title);
             marca = (TextView) view.findViewById( R.id.card_list_marca);
+            img = (SimpleDraweeView) view.findViewById( R.id.card_list_image );
         }
     }
 }
