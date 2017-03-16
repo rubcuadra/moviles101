@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -28,6 +30,8 @@ import mx.itesm.csf.app1.Requester;
 import mx.itesm.csf.app1.Utils.JSONParser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A fragment representing a list of Items.
@@ -95,6 +99,7 @@ public class AutoFragment extends Fragment
         final ProgressDialog barraDeProgreso = new ProgressDialog(CONTEXT);
         barraDeProgreso.setMessage("Espera...");
         barraDeProgreso.show();
+
         JsonArrayRequest jsonArr = new JsonArrayRequest(Request.Method.GET,url_array,null,new Response.Listener<JSONArray>()
         {
             @Override
@@ -112,7 +117,19 @@ public class AutoFragment extends Fragment
                 error.printStackTrace();
                 barraDeProgreso.hide();
             }
-        });
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError
+            {
+                HashMap<String, String> headers = new HashMap<String, String>();
+
+                String auth = new String(Base64.encode("9102:9102".getBytes(),Base64.NO_WRAP ))  ;
+                headers.put("Authorization", "Basic "+auth);
+
+                return headers;
+            }
+        };
 
         Requester.getInstance().addToRequestQueue(jsonArr);
     }

@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity
                 HashMap<String, String> headers = new HashMap<String, String>();
 
                 String auth = new String(Base64.encode("9102:9102".getBytes(),Base64.NO_WRAP ))  ;
-                headers.put("Authorization", "Basic "+auth); //BIEN NACO HARDCODEADO
+                headers.put("Authorization", "Basic "+auth);
 
                 return headers;
             }
