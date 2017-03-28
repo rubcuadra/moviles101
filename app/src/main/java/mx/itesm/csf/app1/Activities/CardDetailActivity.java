@@ -7,7 +7,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,7 +26,6 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import mx.itesm.csf.app1.Models.Auto;
 import mx.itesm.csf.app1.Models.Card;
 import mx.itesm.csf.app1.R;
 import mx.itesm.csf.app1.Requester;
@@ -43,6 +41,7 @@ public class CardDetailActivity extends AppCompatActivity {
     @BindView(R.id.autoImage2) SimpleDraweeView drawee_autoImage;
 
     private final static String SERVICIO_ACTUALIZAR = "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial2/tareas/7/servicio.u.autos.php";
+    private final static String SERVICIO_BORRAR= "http://ubiquitous.csf.itesm.mx/~pddm-1019102/content/parcial2/tareas/7/servicio.d.autos.php";
     private Card current;
 
     // referenciamos elementos del layout
@@ -71,7 +70,51 @@ public class CardDetailActivity extends AppCompatActivity {
     @OnClick(R.id.delete_card)
     public void delete(View view)
     {
+        StringRequest requestBorrar = new StringRequest(Request.Method.POST, SERVICIO_BORRAR,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response)
+                    {
 
+                        Log.d("volley","Respuesta : " + response.toString());
+                        try {
+                            JSONObject res = new JSONObject(response);
+                            Toast.makeText(CardDetailActivity.this,"Respuesta : " +res.getString("Mensaje"), Toast.LENGTH_SHORT).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        finish();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        Log.d("volley", "Error : " + error.getMessage());
+                        Toast.makeText(CardDetailActivity.this, "Respuesta: Error al eliminar registro", Toast.LENGTH_SHORT).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError
+            {
+                Map<String, String> map = new HashMap<>();
+                map.put("id_auto",current.getId().toString());
+                Log.d("Parámetros enviados: ", SERVICIO_BORRAR + map.toString());
+                return map;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError
+            {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                String auth = new String(Base64.encode("9102:9102".getBytes(),Base64.NO_WRAP ))  ;
+                headers.put("Authorization", "Basic "+auth);
+                return headers;
+            }
+        };
+
+        Requester.getInstance().addToRequestQueue(requestBorrar);
     }
 
     @OnClick(R.id.update_card)

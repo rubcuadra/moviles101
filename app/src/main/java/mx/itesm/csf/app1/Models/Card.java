@@ -55,7 +55,7 @@ public class Card implements Serializable
         b.putString("auto",a.getAuto());
         b.putString("precio",a.getPrecio());
         b.putString("image",a.getImage());
-        b.putInt("Clave_auto",a.getClave_marca());
+        b.putInt("Clave_auto",a.getId());
         b.putInt("clave_marca",a.getClave_marca());
         return b;
     }
