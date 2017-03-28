@@ -1,8 +1,10 @@
 package mx.itesm.csf.app1.Adapters;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,10 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
+
+import mx.itesm.csf.app1.Activities.AutoDetailActivity;
+import mx.itesm.csf.app1.Activities.CardDetailActivity;
+import mx.itesm.csf.app1.Models.Auto;
 import mx.itesm.csf.app1.Models.Card;
 import mx.itesm.csf.app1.R;
 
@@ -51,6 +57,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>
         holder.title.setText(current.getAuto());
         holder.marca.setText(current.getPrecio());
         holder.img.setImageURI( Uri.parse( current.getImage() ) );
+        holder.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Log.d("ADAPTER",current.toString() );
+                Intent intent = new Intent(activity,CardDetailActivity.class);
+                intent.putExtras( Card.asBundle(current) );
+                activity.startActivity(intent);
+            }
+        });
     }
 
 

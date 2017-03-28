@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,6 +122,9 @@ public class CardFragment extends Fragment
                             c.setAuto( current.getString("Nombre")  ) ;
                             c.setPrecio( current.getString("Precio") );
                             c.setImage( current.getString("imagen") );
+                            c.setId( current.getInt("Clave_auto") );
+                            c.setClave_marca( current.getInt("Clave_marca"));
+                            //Log.d("CardFrag",c.toString());
                             cards.add(c);
                         }
                         mCardAdapter.addCards(cards);

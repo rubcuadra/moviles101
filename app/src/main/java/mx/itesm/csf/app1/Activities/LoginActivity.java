@@ -147,6 +147,17 @@ public class LoginActivity extends AppCompatActivity
             }
         }){
             @Override
+            protected Map<String,String> getParams()
+            {
+                Map<String,String> params = new HashMap<String,String>();
+
+                params.put("usuario",uname);
+                params.put("password",pwd);
+
+                return params;
+            }
+
+            @Override
             public Map<String, String> getHeaders() throws AuthFailureError
             {
                 HashMap<String, String> headers = new HashMap<String, String>();
