@@ -25,10 +25,12 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import mx.itesm.csf.app1.Fragments.CardFragment;
+import mx.itesm.csf.app1.Fragments.MarcasFragment;
 import mx.itesm.csf.app1.Models.Card;
+import mx.itesm.csf.app1.Models.Marca;
 import mx.itesm.csf.app1.R;
 
-public class Main2Activity extends AppCompatActivity implements CardFragment.OnCardListFragmentInteractionListener
+public class Main2Activity extends AppCompatActivity implements CardFragment.OnCardListFragmentInteractionListener, MarcasFragment.OnBrandFragmentInteractionListener
 {
 
     /**
@@ -64,7 +66,7 @@ public class Main2Activity extends AppCompatActivity implements CardFragment.OnC
 
         fragments = new ArrayList<>();
         fragments.add( CardFragment.newInstance()); //Elemento 0 de tabs
-        fragments.add( PlaceholderFragment.newInstance(2) ); //Elemento 1
+        fragments.add(MarcasFragment.newInstance() ); //Elemento 1
         fragments.add( PlaceholderFragment.newInstance(3) );
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -111,8 +113,11 @@ public class Main2Activity extends AppCompatActivity implements CardFragment.OnC
     @Override
     public void OnCardListFragmentInteraction(Card c)
     {
+    }
 
-
+    @Override
+    public void OnBrandFragmentInteraction(Marca c)
+    {
     }
 
     /**
