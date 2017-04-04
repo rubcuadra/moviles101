@@ -37,7 +37,11 @@
             android:name=".Activities.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.CardDetailActivity"></activity>
+        <activity android:name=".Activities.CardDetailActivity" />
+        <activity
+            android:name=".Activities.CRUD"
+            android:label="@string/title_activity_crud"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

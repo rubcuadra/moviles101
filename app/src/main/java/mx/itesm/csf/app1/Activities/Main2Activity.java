@@ -1,5 +1,6 @@
 package mx.itesm.csf.app1.Activities;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -77,11 +78,13 @@ public class Main2Activity extends AppCompatActivity implements CardFragment.OnC
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view)
+            {
+                Intent crud = new Intent().setClass(Main2Activity.this, CRUD.class);
+                startActivity(crud);
             }
         });
 
